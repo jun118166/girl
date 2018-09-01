@@ -1,5 +1,7 @@
 package com.exfox.gril.service;
 
+import com.exfox.gril.enums.ResutlEnum;
+import com.exfox.gril.exception.GirlException;
 import com.exfox.gril.repository.GirlRepository;
 import com.exfox.gril.domain.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,19 @@ public class GirlService {
         girl1.setAge(18);
         girl1.setCupSize("B");
         girlRepository.save(girl1);
+    }
 
+    public void getAge(Integer id) throws Exception {
+        Girl girl = girlRepository.getOne(id);
+        Integer age = girl.getAge();
+        if (age < 10) {
+            throw  new GirlException(ResutlEnum.PRIMARY_SCHOOL);
+        } else if (age > 10 && age < 16) {
+            throw  new GirlException(ResutlEnum.MIDDLE_SCHOOL);
+        }
+    }
+
+    public Girl findOne(Integer id){
+        return  girlRepository.findById(id).get();
     }
 }
