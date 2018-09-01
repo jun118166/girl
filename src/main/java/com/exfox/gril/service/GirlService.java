@@ -1,6 +1,6 @@
 package com.exfox.gril.service;
 
-import com.exfox.gril.Repository.GirlRepository;
+import com.exfox.gril.repository.GirlRepository;
 import com.exfox.gril.domain.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -14,7 +14,7 @@ public class HelloController {
     @Value("${age}")
     private String age;
 
-    @Value("$content")
+    @Value("${content}")
     private String content;
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.exfox.gril.Repository;
+package com.exfox.gril.repository;
 
 import com.exfox.gril.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;

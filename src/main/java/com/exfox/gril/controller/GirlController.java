@@ -1,9 +1,10 @@
 package com.exfox.gril.controller;
 
-import com.exfox.gril.service.GirlService;
 import com.exfox.gril.domain.Girl;
-import com.exfox.gril.Repository.GirlRepository;
+import com.exfox.gril.repository.GirlRepository;
+import com.exfox.gril.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,7 +24,11 @@ public class GirlController {
     }
 
     @PostMapping(value = "/girlAdd")
-    public Girl girlAdd(@Valid Girl girl) {
+    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
         return girlRepository.save(girl);
     }
 
